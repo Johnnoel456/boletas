@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sala de Videojuegos · Ventas</title>
+<style>
+:root{--bg:#f4f6fb;--cd:#fff;--tx:#14213d;--mu:#5b6678;--bd:#d5dbe7;--ok:#1b9e55;--okb:#e3f6ec;--wa:#e69a00;--wab:#fff1cf;--ba:#d6302f;--bab:#fde3e3;--ac:#2456d6;--rt:#d9730d;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1420;--cd:#1a2233;--tx:#eef2fb;--mu:#9aa7bd;--bd:#2e3a52;--okb:#12362a;--wab:#43330a;--bab:#4a1b1b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1420;--cd:#1a2233;--tx:#eef2fb;--mu:#9aa7bd;--bd:#2e3a52;--okb:#12362a;--wab:#43330a;--bab:#4a1b1b;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Arial,Helvetica,sans-serif;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+button{font-family:inherit;color:inherit;cursor:pointer}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);padding:8px 10px 0;border-bottom:1px solid var(--bd)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+#clk{font-size:14px;color:var(--mu)}
+.seg{display:flex;gap:6px}
+.seg button{border:2px solid var(--bd);background:var(--cd);border-radius:10px;padding:6px 12px;font-weight:700;font-size:14px;line-height:1.1}
+.seg small{display:block;font-weight:400;font-size:11px;color:var(--mu)}
+.seg button.on{border-color:var(--ac);background:var(--ac);color:#fff}.seg button.on small{color:#dfe7ff}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0}
+.k{background:var(--cd);border:1px solid var(--bd);border-radius:10px;padding:6px 8px;text-align:center}
+.k small{display:block;font-size:11px;color:var(--mu)}.k b{font-size:clamp(15px,3.6vw,24px)}
+.k.c{background:var(--ac);border-color:var(--ac);color:#fff}.k.c small{color:#dfe7ff}
+nav{display:flex;gap:6px}
+nav button{flex:1;border:0;background:none;padding:10px 4px;font-size:16px;font-weight:700;color:var(--mu);border-bottom:4px solid transparent}
+nav button.on{color:var(--ac);border-color:var(--ac)}
+main{padding:10px;max-width:1100px;margin:auto}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.m{border:3px solid var(--bd);background:var(--cd);border-radius:14px;padding:12px;font-size:20px;font-weight:800}
+.m.v.on{background:var(--ok);border-color:var(--ok);color:#fff}.m.d.on{background:var(--rt);border-color:var(--rt);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:140px;border:4px solid var(--ok);background-color:var(--okb);background-image:linear-gradient(to bottom,rgba(10,14,24,.9) 0%,rgba(10,14,24,.6) 45%,rgba(10,14,24,.25) 100%),var(--img);background-size:cover;background-position:center;color:#fff;text-shadow:0 1px 3px #000;border-radius:16px;padding:8px;text-align:center;overflow:hidden}
+.card:active{transform:scale(.96)}
+.card .e{font-size:28px}.card b{font-size:16px}.card .p{font-size:26px;font-weight:800}.card .q{font-size:14px;font-weight:700}.card .dt{font-size:13px;letter-spacing:2px;color:#e5e9f2}
+.card.wa{border-color:var(--wa);background-color:var(--wab)}.card.wa .q{color:var(--wa);font-size:16px}
+.card.out{border-color:var(--ba);background-color:var(--bab);opacity:.9}.card.out .q{color:#ff7a7a}
+.card.rt{border-color:var(--rt);background-color:var(--wab)}
+h2{font-size:18px;margin:14px 0 6px}
+.mu{color:var(--mu);font-size:13px;margin:4px 0 8px}
+.li{display:flex;align-items:center;gap:8px;background:var(--cd);border:1px solid var(--bd);border-radius:10px;padding:8px 10px;margin-bottom:6px;font-size:14px}
+.li span{flex:1}.x{border:0;background:var(--bab);color:var(--ba);border-radius:8px;font-size:16px;padding:6px 10px;font-weight:800}
+.pn{background:var(--cd);border:1px solid var(--bd);border-radius:14px;padding:12px;margin-bottom:10px}
+.big{font-size:28px;font-weight:800}
+.slots{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}.slots i{width:26px;height:26px;border-radius:6px;border:2px solid var(--bd)}.slots i.f{background:var(--ok);border-color:var(--ok)}
+.ms{padding:8px;border-radius:10px;font-weight:700;background:var(--okb)}.ms.wa{background:var(--wab);color:var(--wa)}.ms.ba{background:var(--ba);color:#fff}
+input{width:100%;font-size:20px;padding:12px;border:2px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);-webkit-user-select:text;user-select:text}
+.ch{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.ch span{font-size:13px;color:var(--mu);width:100%}
+.ch button{flex:1;min-width:48px;border:3px solid var(--bd);background:var(--cd);border-radius:12px;padding:12px 0;font-size:22px;font-weight:800}
+.ch button.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.reg{width:100%;border:0;background:var(--ok);color:#fff;border-radius:14px;padding:16px;font-size:20px;font-weight:800}.reg:disabled{background:var(--bd);color:var(--mu)}
+.reg.rt{background:var(--rt)}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:6px;border-bottom:1px solid var(--bd);text-align:center}td:first-child,th:first-child{text-align:left}tfoot td{font-weight:800}
+.st{display:grid;grid-template-columns:1fr 1fr;gap:8px}.st label{font-size:13px;color:var(--mu)}.st input{font-size:18px;padding:8px}
+.bt{border:2px solid var(--bd);background:var(--cd);border-radius:12px;padding:12px;font-size:16px;font-weight:700;margin:4px 4px 0 0}.bt.r{border-color:var(--ba);color:var(--ba)}
+.champ{background:var(--wab);border:2px solid var(--wa);border-radius:14px;padding:12px;text-align:center;font-size:22px;font-weight:800;margin:8px 0}
+.bk{display:flex;gap:12px;overflow-x:auto;align-items:stretch;padding-bottom:6px}
+.rd{display:flex;flex-direction:column;justify-content:space-around;gap:8px;min-width:170px}
+.rd h4{margin:0;text-align:center;color:var(--mu);font-size:12px;text-transform:uppercase;letter-spacing:1px}
+.mt{border:2px solid var(--bd);border-radius:10px;background:var(--cd);overflow:hidden}
+.pl{padding:7px 9px;font-size:14px;font-weight:700;min-height:34px;border-bottom:1px solid var(--bd)}
+.pl:last-child{border-bottom:0}
+.pl small{font-weight:400;color:var(--mu)}
+.pl.e{color:var(--mu);font-weight:400}
+.pl[data-a]{cursor:pointer}.pl[data-a]:hover{background:var(--okb)}
+.pl.w{background:var(--ok);color:#fff}.pl.w small{color:#e6fff0}
+.ov{position:fixed;inset:0;background:#000a;display:none;align-items:center;justify-content:center;z-index:25;padding:10px}
+.sheet{background:var(--cd);color:var(--tx);border:1px solid var(--bd);border-radius:18px;padding:16px;width:100%;max-width:520px;max-height:94vh;overflow:auto;box-shadow:0 10px 40px #000a}
+.sheet h2{margin:0 0 6px;font-size:20px}
+.pr{display:grid;grid-template-columns:1fr 1fr;gap:8px;text-align:center;margin:8px 0}.pr small{display:block;color:var(--mu);font-size:13px}.pr b{font-size:26px}
+.chg{font-size:30px;font-weight:800;text-align:center;border-radius:14px;padding:12px;margin:10px 0 4px}
+.chg.ok{background:var(--okb);color:var(--ok)}.chg.falta{background:var(--bab);color:var(--ba)}
+.chg.neu{background:var(--wab);color:var(--tx)}
+.des{text-align:center;margin-bottom:10px}
+.des span{display:inline-block;background:var(--wab);border-radius:8px;padding:5px 9px;margin:3px;font-weight:700;font-size:15px}
+.bills{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px}
+.bills button{border:2px solid var(--bd);background:var(--bg);color:var(--tx);border-radius:12px;padding:14px 0;font-size:18px;font-weight:800}
+.bills button:active{transform:scale(.95)}
+.ac{display:flex;gap:8px;margin:8px 0}.ac button{flex:1;padding:12px 6px}
+#toast{position:fixed;left:10px;right:10px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;display:none;align-items:center;gap:10px;background:#14213d;color:#fff;border-radius:14px;padding:14px;font-size:17px;font-weight:700;box-shadow:0 6px 24px #0006;max-width:700px;margin:auto}
+#toast.ba{background:var(--ba)}#toast.wa{background:#b87400}#toast span{flex:1}#toast button{border:0;border-radius:10px;padding:10px 14px;font-weight:800;background:#fff;color:#14213d}
+</style></head><body>
+<div id="app"></div><div id="ov" class="ov"></div><div id="toast"></div>
+<script>
+const G=[["Mortal Kombat 11",50,"🥊"],["Dragon Ball",50,"🥊"],["Super Smash Bros",100,"🥊"],["FIFA",75,"⚽"],["NBA 2K",75,"🏀"],["MLB",75,"⚾"],["Mario Kart",100,"🏎️"],["Need for Speed",50,"🚗"],["Call of Duty Black Ops 2",100,"🔫"],["GTA V",50,"🔫"],["GTA VI",175,"🔫"]];
+const DEN=[1000,500,200,100,50,25,10,5];
+const IMG=["mortal.jpg","dragonball.png","supersmash.png","fifa.jpg","nba.png","mlb.png","mario%20kart.jpg","nfsh.jpg","bo2.png","gtav.jpg","gtavi.jpg"];
+const TMAX_OPC=[16,24,32];
+const KEY="ventas-sala-v1";
+let S={fondo:200,cap:[4,6],tmax:16,tprice:150,sales:[],tor:[],bw:{},tanda:0};
+try{Object.assign(S,JSON.parse(localStorage.getItem(KEY)||"{}"))}catch(e){}
+if(!S.bw)S.bw={};
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const pad=n=>String(n).padStart(2,"0");
+const day=()=>{const d=new Date();return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())};
+const fmt=n=>Number(n).toLocaleString("en-US");
+const money=n=>(n<0?"-":"")+"RD$"+fmt(Math.abs(n));
+const hm=ts=>{const d=new Date(ts);return pad(d.getHours())+":"+pad(d.getMinutes())};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const auto=()=>new Date().getHours()<12?1:2;
+const tanda=()=>S.tanda||auto();
+const uid=()=>Date.now()+"."+Math.floor(Math.random()*1e4);
+let mode="v",tab="v",nmV="",gr="",lt="",PG=null,undoId=null,tmo,wipeArm=false,lastAuto=auto();
+
+const net=(g,t)=>{const d=day();let n=0;S.sales.forEach(s=>{if(s.d==d&&s.g==g&&s.t==t)n+=s.k=="v"?1:-1});return n};
+function stats(){const d=day(),o={v:0,dv:0,mv:0,md:0,tm:0,ov:0};
+ S.sales.forEach(s=>{if(s.d!=d)return;const p=G[s.g][1];if(s.k=="v"){o.v++;o.mv+=p;if(s.ov)o.ov++}else{o.dv++;o.md+=p}});
+ S.tor.forEach(x=>{if(x.d==d)o.tm+=x.p});return o}
+const clk=()=>{const d=new Date();return "📅 "+d.toLocaleDateString("es-DO",{weekday:"long",day:"numeric",month:"long",year:"numeric"})+" · "+hm(d)};
+function beep(f){try{const a=new(window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator();o.frequency.value=f;o.connect(a.destination);o.start();o.stop(a.currentTime+.18)}catch(e){}}
+function toast(m,c,u){const t=document.getElementById("toast");undoId=u||null;
+ t.className=c||"";t.innerHTML="<span>"+m+"</span>"+(u?'<button data-a="undo">↩ Deshacer</button>':"");t.style.display="flex";
+ clearTimeout(tmo);tmo=setTimeout(()=>t.style.display="none",c=="ba"?3000:4500)}
+
+// ---- cambio en billetes/monedas (voraz: es el menor número de piezas) ----
+function cambio(c){let r=c;const o=[];DEN.forEach(d=>{const k=Math.floor(r/d);if(k>0){o.push([d,k]);r-=k*d}});return o}
+const desglose=c=>cambio(c).map(([d,k])=>`<span>${k} × RD$${fmt(d)}</span>`).join("")||"<span>Sin cambio</span>";
+
+// ---- cuadro del torneo ----
+function bracket(){
+ let size=2;while(size<Math.max(S.tmax,S.tor.length))size*=2;
+ let cur=Array.from({length:size},(_,j)=>S.tor[j]||null),rounds=[];
+ while(cur.length>1){
+  const ms=[],nx=[];
+  for(let j=0;j<cur.length;j+=2){
+   const a=cur[j],b=cur[j+1],key=rounds.length+"-"+(j/2);
+   let w=null;
+   if(a&&b){const s=S.bw[key];w=s==a.id?a:s==b.id?b:null}
+   else w=a||b||null;
+   ms.push({key,a,b,w:w?w.id:null});nx.push(w)
+  }
+  rounds.push(ms);cur=nx
+ }
+ return rounds
+}
+function cuadro(){
+ if(!S.tor.length)return `<div class="li">Inscribe participantes para armar el cuadro.</div>`;
+ const rs=bracket(),fin=rs[rs.length-1][0],champ=fin.w&&S.tor.find(p=>p.id==fin.w);
+ const lab=k=>k==1?"🏆 Final":k==2?"🥈 Semifinal":k==4?"⚔️ Cuartos":k==8?"🎮 Octavos":k==16?"🎲 Dieciseisavos":"🕹️ Ronda";
+ const pl=(p,m)=>!p?`<div class="pl e">—</div>`:`<div class="pl${m.w==p.id?" w":""}"${m.a&&m.b?` data-a="bw" data-v="${m.key}|${p.id}"`:""}>${esc(p.n)} <small>${esc(p.c)}</small></div>`;
+ return (champ?`<div class="champ">🏆 CAMPEÓN: ${esc(champ.n)}</div>`:"")+
+  `<p class="mu">Toca el nombre del ganador de cada partido (toca otra vez para quitarlo).</p>
+  <div class="bk">${rs.map(ms=>`<div class="rd"><h4>${lab(ms.length)}</h4>${ms.map(m=>`<div class="mt">${pl(m.a,m)}${pl(m.b,m)}</div>`).join("")}</div>`).join("")}</div>`;
+}
+
+// ---- pantalla principal ----
+function card(i,t){const cap=S.cap[t-1],n=net(i,t),q=cap-n,g=G[i];
+ const c=mode=="d"?(n>0?"rt":"out"):(q<=0?"out":q==1?"wa":"");
+ const m=mode=="d"?(n>0?"↩ Tocar para devolver":"Nada que devolver"):(q<=0?"⛔ AGOTADO":q==1?"⚠ ¡SOLO 1 MÁS!":"Quedan "+q);
+ return `<button class="card ${c}" style="--img:url('${IMG[i]}')" data-a="sell" data-v="${i}"><span class="e">${g[2]}</span><b>${g[0]}</b><span class="p">${money(g[1])}</span><span class="q">${m}</span><span class="dt">${"●".repeat(Math.max(0,Math.min(n,cap)))+"○".repeat(Math.max(0,cap-n))}</span></button>`}
+function render(){
+ const t=tanda(),st=stats(),d=day(),cj=S.fondo+st.mv-st.md+st.tm;
+ let h=`<div class="top"><div class="row"><span id="clk">${clk()}</span><div class="seg">${[1,2].map(i=>`<button data-a="tn" data-v="${i}" class="${t==i?"on":""}">${i==1?"🌅":"🌇"} Tanda ${i}<small>${i==1?"10:00–11:20":"1:00–2:40"}</small></button>`).join("")}<button data-a="tn" data-v="0" class="${S.tanda==0?"on":""}">🔄 Auto</button></div></div>
+ <div class="kpis"><div class="k"><small>🎫 Boletos netos</small><b>${st.v-st.dv}</b></div><div class="k"><small>💲 Ventas netas</small><b>${money(st.mv-st.md)}</b></div><div class="k"><small>🏆 Torneo</small><b>${money(st.tm)}</b></div><div class="k c"><small>💼 CAJA ESPERADA</small><b>${money(cj)}</b></div></div>
+ <nav>${[["v","🎟️ Vender"],["t","🏆 Torneo "+S.tor.length+"/"+S.tmax],["r","📊 Resumen"]].map(x=>`<button data-a="tab" data-v="${x[0]}" class="${tab==x[0]?"on":""}">${x[1]}</button>`).join("")}</nav></div><main>`;
+
+ if(tab=="v"){
+  h+=`<div class="modes"><button class="m v ${mode=="v"?"on":""}" data-a="md" data-v="v">➕ VENDER</button><button class="m d ${mode=="d"?"on":""}" data-a="md" data-v="d">↩ DEVOLVER</button></div>
+  <div class="grid">${G.map((g,i)=>card(i,t)).join("")}</div><h2>🕘 Últimos movimientos de hoy</h2>`;
+  const L=S.sales.filter(s=>s.d==d).slice(-5).reverse();
+  h+=L.length?L.map(s=>`<div class="li"><span>${hm(s.ts)} · T${s.t} · ${s.k=="v"?"Venta":"↩ Devolución"} · <b>${G[s.g][0]}</b>${s.ov?' <b style="color:var(--ba)">(agotado)</b>':""} · ${money((s.k=="v"?1:-1)*G[s.g][1])}${s.k=="v"&&s.pg!=null?` · cobró ${money(s.pg)}, dev. ${money(s.dv)}`:""}</span><button class="x" data-a="del" data-v="${s.id}">✕</button></div>`).join(""):'<div class="li">📭 Aún no hay movimientos hoy.</div>';
+ }
+
+ if(tab=="t"){
+  const n=S.tor.length,left=S.tmax-n,full=left<=0;
+  h+=`<div class="pn"><h2 style="margin-top:0">🏆 Torneo de Brawlhalla · ${money(S.tprice)} por persona</h2>
+  <div class="big">${n} / ${S.tmax} inscritos</div>
+  <div class="ch"><span>🎯 Cupos del torneo (se puede cambiar en cualquier momento)</span>${TMAX_OPC.map(x=>`<button data-a="tmax" data-v="${x}" class="${S.tmax==x?"on":""}">${x}</button>`).join("")}</div>
+  <div class="slots">${Array.from({length:Math.max(S.tmax,n)},(_,i)=>`<i class="${i<n?"f":""}"></i>`).join("")}</div>
+  <div class="ms ${full?"ba":left==1?"wa":""}">${full?"⛔ TORNEO LLENO — ya no se puede inscribir a nadie":left==1?"⚠ Falta solo 1 cupo":"Faltan "+left+" cupos"}</div></div>
+  <div class="pn"><input id="nm" placeholder="✍️ Nombre del participante" value="${esc(nmV)}" autocomplete="off" ${full?"disabled":""}>
+  <div class="ch"><span>🎓 Grado</span>${[1,2,3,4,5,6].map(x=>`<button data-a="gr" data-v="${x}" class="${gr==x?"on":""}">${x}</button>`).join("")}</div>
+  <div class="ch"><span>🔤 Sección</span>${["A","B","C","D"].map(x=>`<button data-a="lt" data-v="${x}" class="${lt==x?"on":""}">${x}</button>`).join("")}</div>
+  <button id="regbtn" class="reg" data-a="reg" ${!full&&nmV.trim()&&gr&&lt?"":"disabled"}>💵 COBRAR E INSCRIBIR${gr&&lt?" · "+gr+lt:""} · ${money(S.tprice)}</button></div>
+  <div class="pn"><h2 style="margin-top:0">🏆 Cuadro del torneo</h2>${cuadro()}</div>
+  <h2>👥 Inscritos</h2>${S.tor.map((x,i)=>`<div class="li"><span>${i+1}. <b>${esc(x.n)}</b> · curso ${esc(x.c)}</span><button class="x" data-a="dt" data-v="${x.id}">✕</button></div>`).join("")||'<div class="li">📭 Nadie inscrito aún.</div>'}`;
+ }
+
+ if(tab=="r"){
+  let a=0,b=0,m=0;
+  const rows=G.map((g,i)=>{const n1=net(i,1),n2=net(i,2);a+=n1;b+=n2;m+=(n1+n2)*g[1];return `<tr><td>${g[2]} ${g[0]}</td><td>${n1}/${S.cap[0]}</td><td>${n2}/${S.cap[1]}</td><td>${money((n1+n2)*g[1])}</td></tr>`}).join("");
+  h+=`<div class="pn"><table><thead><tr><th>Juego (hoy)</th><th>Tanda 1</th><th>Tanda 2</th><th>Dinero</th></tr></thead><tbody>${rows}</tbody><tfoot><tr><td>TOTAL</td><td>${a}</td><td>${b}</td><td>${money(m)}</td></tr></tfoot></table></div>
+  <div class="pn"><table><tbody><tr><td>🧾 Ventas brutas (${st.v} boletos)</td><td>${money(st.mv)}</td></tr><tr><td>↩ Devoluciones (${st.dv} boletos)</td><td>-${money(st.md)}</td></tr><tr><td>🏆 Torneo (inscripciones de hoy)</td><td>${money(st.tm)}</td></tr><tr><td>🏦 Fondo inicial</td><td>${money(S.fondo)}</td></tr></tbody><tfoot><tr><td>🧮 EFECTIVO ESPERADO EN CAJA</td><td>${money(cj)}</td></tr></tfoot></table>${st.ov?`<p class="ms ba" style="margin:8px 0 0">⚠ ${st.ov} boleto(s) vendido(s) con el juego agotado hoy</p>`:""}</div>
+  <div class="pn"><h2 style="margin-top:0">⚙️ Ajustes</h2><div class="st">${[["fondo","💰 Fondo inicial (RD$)",S.fondo],["c1","🎟️ Boletos por juego · Tanda 1",S.cap[0]],["c2","🎟️ Boletos por juego · Tanda 2",S.cap[1]],["tprice","🏆 Precio del torneo (RD$)",S.tprice]].map(x=>`<div><label>${x[1]}</label><input type="number" inputmode="numeric" min="0" data-s="${x[0]}" value="${x[2]}"></div>`).join("")}</div></div>
+  <button class="bt" data-a="exp">📊 Exportar a Excel (CSV)</button><button class="bt" data-a="bk">💾 Guardar copia de seguridad</button><button class="bt" data-a="rs">📂 Cargar copia de seguridad</button><button class="bt r" data-a="wipe">${wipeArm?"¿Seguro? Toca otra vez":"🗑 Borrar todos los datos"}</button>`;
+ }
+ document.getElementById("app").innerHTML=h+"</main>";
+}
+
+// ---- ventana de cobro / devolución ----
+function openPay(kind,o){PG=Object.assign({kind,recv:0,ask:false},o);drawPay()}
+function close(){PG=null;drawPay()}
+function drawPay(){
+ const ov=document.getElementById("ov");
+ if(!PG){ov.style.display="none";ov.innerHTML="";return}
+ const p=PG,ch=p.recv-p.price;let x;
+ if(p.ask){
+  x=`<h2>⛔ ${esc(p.label)} está AGOTADO</h2><p class="mu">Tanda ${p.t}. ¿Seguro que quieres vender otro boleto de este juego?</p>
+  <div class="ac"><button class="bt" data-a="pno">No, cancelar</button><button class="bt r" data-a="pyes">Sí, vender igual</button></div>`;
+ }else if(p.kind=="d"){
+  x=`<h2>↩ Devolver boleto</h2><p class="mu">${esc(p.label)} · tanda ${p.t}</p>
+  <div class="chg neu">Entregar ${money(p.price)}</div><div class="des">${desglose(p.price)}</div>
+  <div class="ac"><button class="bt" data-a="pno">Cancelar</button></div>
+  <button class="reg rt" data-a="pok">💸 CONFIRMAR DEVOLUCIÓN</button>`;
+ }else{
+  x=`<h2>${p.kind=="t"?"🏆":"🎟️"} ${esc(p.label)}</h2>
+  <div class="pr"><div><small>A cobrar</small><b>${money(p.price)}</b></div><div><small>Recibido</small><b>${money(p.recv)}</b></div></div>
+  ${ch<0?`<div class="chg falta">Faltan ${money(-ch)}</div>`:`<div class="chg ok">Devuelta: ${money(ch)}</div><div class="des">Devolver: ${desglose(ch)}</div>`}
+  <div class="bills">${DEN.map(d=>`<button data-a="pp" data-v="${d}">${d>=100?"💵":"🪙"} +${fmt(d)}</button>`).join("")}</div>
+  <div class="ac"><button class="bt" data-a="pe">🎯 Exacto</button><button class="bt" data-a="pc">⌫ Borrar</button><button class="bt" data-a="pno">✖ Cancelar</button></div>
+  <button class="reg" data-a="pok" ${ch<0?"disabled":""}>${p.kind=="t"?"🏆 INSCRIBIR":"🎟️ CONFIRMAR VENTA"}</button>`;
+ }
+ ov.innerHTML=`<div class="sheet">${x}</div>`;ov.style.display="flex";
+}
+function pOk(){
+ const p=PG;if(!p||p.ask)return;
+ const ch=p.recv-p.price;
+ if(p.kind=="d"){
+  const r={id:uid(),ts:Date.now(),d:day(),g:p.i,k:"d",t:p.t};
+  S.sales.push(r);save();close();render();
+  toast("↩ Devolución "+G[p.i][0]+" · entregar "+money(p.price),"wa",r.id);
+  return;
+ }
+ if(ch<0)return;
+ if(p.kind=="v"){
+  const r={id:uid(),ts:Date.now(),d:day(),g:p.i,k:"v",t:p.t,pg:p.recv,dv:ch,ov:p.ov};
+  S.sales.push(r);save();close();render();
+  const q=S.cap[p.t-1]-net(p.i,p.t),cobro=" · cobró "+money(p.recv)+" · devuelta "+money(ch);
+  if(q<=0){beep(220);toast("⛔ "+p.label+": AGOTADO"+cobro,"ba",r.id)}
+  else if(q==1){beep(520);toast("⚠ "+p.label+": solo se puede vender 1 más"+cobro,"wa",r.id)}
+  else toast("✓ "+p.label+" · quedan "+q+cobro,"",r.id);
+  return;
+ }
+ // torneo
+ if(S.tor.length>=S.tmax){close();beep(180);toast("⛔ Torneo lleno","ba");return}
+ S.tor.push({id:uid(),ts:Date.now(),d:day(),n:p.name,c:p.c,p:S.tprice,pg:p.recv,dv:ch});
+ nmV="";gr="";lt="";save();close();render();
+ const f=S.tmax-S.tor.length,nm=esc(p.name);
+ if(f<=0){beep(220);toast("⛔ "+nm+" inscrito — TORNEO LLENO","ba")}
+ else if(f==1){beep(520);toast("⚠ "+nm+" inscrito — falta solo 1 cupo","wa")}
+ else toast("🏆 "+nm+" inscrito · "+S.tor.length+"/"+S.tmax,"");
+}
+
+// ---- acciones ----
+function sell(i){
+ const t=tanda(),cap=S.cap[t-1],n=net(i,t),g=G[i];
+ if(mode=="d"){
+  if(n<=0){beep(180);toast("No hay boletos de "+g[0]+" para devolver en la tanda "+t,"ba");return}
+  openPay("d",{i,t,price:g[1],label:g[0]});return;
+ }
+ openPay("v",{i,t,price:g[1],label:g[0],ov:n>=cap,ask:n>=cap});
+}
+function reg(){
+ if(S.tor.length>=S.tmax){beep(180);toast("⛔ Torneo lleno — sube los cupos si quieres más","ba");return}
+ if(!(nmV.trim()&&gr&&lt))return;
+ openPay("t",{price:S.tprice,label:"Inscripción: "+esc(nmV.trim()),name:nmV.trim(),c:gr+lt});
+}
+function csv(){const q=v=>typeof v=="string"?'"'+v.replace(/"/g,'""')+'"':v;
+ const r=[["Fecha","Hora","Tanda","Tipo","Concepto","Monto RD$","Recibido RD$","Devuelta RD$","Nota"]];
+ S.sales.forEach(s=>r.push([s.d,hm(s.ts),s.t,s.k=="v"?"Venta":"Devolución",G[s.g][0],(s.k=="v"?1:-1)*G[s.g][1],s.pg??"",s.dv??"",s.ov?"Vendido con juego agotado":""]));
+ S.tor.forEach(x=>r.push([x.d,hm(x.ts),"","Torneo","Brawlhalla: "+x.n+" ("+x.c+")",x.p,x.pg??"",x.dv??"",""]));
+ return "﻿"+r.map(a=>a.map(q).join(",")).join("\r\n")}
+function descarga(name,type,text){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)}
+function restaura(){const inp=document.createElement("input");inp.type="file";inp.accept=".json,application/json";
+ inp.onchange=()=>{const f=inp.files[0];if(!f)return;const r=new FileReader();
+  r.onload=()=>{try{const d=JSON.parse(r.result);if(!Array.isArray(d.sales)||!Array.isArray(d.tor))throw 0;Object.assign(S,d);if(!S.bw)S.bw={};save();render();toast("✓ Copia restaurada","")}catch(e){toast("⛔ Archivo no válido","ba")}};
+  r.readAsText(f)};
+ inp.click()}
+
+document.addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(!b)return;const a=b.dataset.a,v=b.dataset.v;
+ if(a=="sell")sell(+v);
+ else if(a=="md"){mode=v;render()}
+ else if(a=="tab"){tab=v;render()}
+ else if(a=="tn"){S.tanda=+v;save();render()}
+ else if(a=="gr"){gr=gr==v?"":v;render()}
+ else if(a=="lt"){lt=lt==v?"":v;render()}
+ else if(a=="tmax"){S.tmax=+v;save();render()}
+ else if(a=="reg")reg();
+ else if(a=="bw"){const[k,id]=v.split("|");if(S.bw[k]==id)delete S.bw[k];else S.bw[k]=id;save();render()}
+ else if(a=="undo"){S.sales=S.sales.filter(s=>s.id!=undoId);save();document.getElementById("toast").style.display="none";render()}
+ else if(a=="del"){S.sales=S.sales.filter(s=>s.id!=v);save();render()}
+ else if(a=="dt"){S.tor=S.tor.filter(s=>s.id!=v);save();render()}
+ else if(a=="wipe"){if(!wipeArm){wipeArm=true;render();setTimeout(()=>{wipeArm=false;if(tab=="r")render()},3000)}else{wipeArm=false;S.sales=[];S.tor=[];S.bw={};save();render()}}
+ else if(a=="exp")descarga("ventas_sala_"+day()+".csv","text/csv;charset=utf-8",csv());
+ else if(a=="bk")descarga("ventas_sala_respaldo_"+day()+".json","application/json",JSON.stringify(S));
+ else if(a=="rs")restaura();
+ else if(a=="pp"&&PG){PG.recv+=+v;drawPay()}
+ else if(a=="pe"&&PG){PG.recv=PG.price;drawPay()}
+ else if(a=="pc"&&PG){PG.recv=0;drawPay()}
+ else if(a=="pno")close();
+ else if(a=="pyes"&&PG){PG.ask=false;drawPay()}
+ else if(a=="pok")pOk();
+});
+document.addEventListener("input",e=>{if(e.target.id=="nm"){nmV=e.target.value;const r=document.getElementById("regbtn");if(r)r.disabled=!(nmV.trim()&&gr&&lt&&S.tor.length<S.tmax)}});
+document.addEventListener("keydown",e=>{if(e.key=="Enter"&&e.target.id=="nm")reg()});
+document.addEventListener("change",e=>{const k=e.target.dataset.s;if(!k)return;const v=Math.max(0,Math.floor(+e.target.value||0));
+ if(k=="c1")S.cap[0]=v;else if(k=="c2")S.cap[1]=v;else S[k]=v;save();render()});
+setInterval(()=>{const c=document.getElementById("clk");if(c)c.textContent=clk();if(S.tanda==0&&auto()!=lastAuto){lastAuto=auto();render()}},20000);
+render();
+</script></body></html>
